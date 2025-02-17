@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complex Login Page</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Container */
+        .container {
+            background-color: white;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+        }
+
+        /* Header */
+        h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* Form Input */
+        input[type="email"] {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 25px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            color: #333;
+            background-color: #f7f7f7;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="email"]:focus {
+            outline: none;
+            border-color: #4CAF50;
+            background-color: #fff;
+        }
+
+        /* Continue Button */
+        button.continue-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button.continue-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Signup Link */
+        .signup-link {
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        .signup-link a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .signup-link a:hover {
+            color: #388E3C;
+        }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 20px 0;
+            color: #999;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .divider::before {
+            margin-right: 10px;
+        }
+
+        .divider::after {
+            margin-left: 10px;
+        }
+
+        /* Alternative Options (Grid) */
+        .alt-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 15px;
+            margin-top: 20px;
+        }
+
+        .alt-options button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f5f5;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .alt-options button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .alt-options button img {
+            margin-right: 12px;
+        }
+
+        /* Footer Links */
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .footer-links a {
+            color: #4CAF50;
+            font-size: 12px;
+            margin: 0 8px;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #388E3C;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+
+            .alt-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome back</h1>
+        <input type="email" placeholder="Email address*" required>
+        <button class="continue-btn">Continue</button>
+
+        <div class="signup-link">
+            Don't have an account? <a href="#">Sign Up</a>
+        </div>
+
+        <div class="divider">OR</div>
+
+        <div class="alt-options">
+            <button onclick="window.location.href='phone.html';">
+                <img src="img/phone.png" alt="Phone Icon" width="20"> Continue with phone
+            </button>
+            <button onclick="window.location.href='google.html';">
+                <img src="img/google.png" alt="Google Icon" width="20"> Continue with Google
+            </button>
+            <button onclick="window.location.href='micro.html';">
+                <img src="img/microsoft.png" alt="Microsoft Icon" width="20"> Continue with Microsoft Account
+            </button>
+            <button onclick="window.location.href='apple.html';">
+                <img src="img/apple.png" alt="Apple Icon" width="20"> Continue with Apple
+            </button>
+        </div>
+
+        <div class="footer-links">
+            <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
+        </div>
+    </div>
+</body>
+</html>

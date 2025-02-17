@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Interface</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="container">
+    <!-- Left Section -->
+    <div class="left-section">
+        <div class="business-info">
+            <h1>T</h1>
+            <h2>TechNet</h2>
+            <p><strong>Razorpay Trusted Business</strong></p>
+            <p>Verified Business</p>
+            <p>Verified for authenticity</p>
+            <p>Secure Payments</p>
+            <p>Razorpay's risk system ensures secure payment protection from fraud.</p>
+
+            <!-- Display the entered data under TechNet -->
+            <div id="user-details">
+                <h3>User Details</h3>
+                <p><strong>Name:</strong> <span id="user-name"></span></p>
+                <p><strong>Email:</strong> <span id="user-email"></span></p>
+                <p><strong>Phone:</strong> <span id="user-phone"></span></p>
+                <p><strong>Grand Total:</strong> ₹<span id="user-grand-total"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Middle Section -->
+    <div class="middle-section">
+        <h2>Payment Options</h2>
+        <div class="payment-option">
+            <h3>UPI <span class="badge">2 Offers</span></h3>
+            <div class="icons">
+                <img src="C:\xampp\htdocs\Technet\img\icons8-google-pay-480.png" alt="Google Pay">
+                <img src="C:\xampp\htdocs\Technet\img\phone-pe-logo-round-icon-537e.png" alt="PhonePe">
+                <img src="C:\xampp\htdocs\Technet\img\paytm_825454.png" alt="Paytm">
+            </div>
+        </div>
+
+        <div class="payment-option">
+            <h3>Cards</h3>
+            <div class="icons">
+                <img src="C:\xampp\htdocs\Technet\img\visa (1).png" alt="VISA">
+                <img src="C:\xampp\htdocs\Technet\img\payment.png" alt="MasterCard">
+                <img src="C:\xampp\htdocs\Technet\img\maestro.png" alt="RUPAY">
+            </div>
+        </div>
+
+        <div class="payment-option">
+            <h3>Netbanking</h3>
+            <div class="icons">
+                <img src= "C:\xampp\htdocs\img\images.jpeg" alt="ICICI">
+                <img src="C:\Users\revat\Downloads\sbi.jpg" alt="KKBK">
+                <img src="C:\xampp\htdocs\Technet\img\canm.jpg" alt="BARB_R">
+            </div>
+        </div>
+
+        <div class="payment-option">
+            <h3>Wallet</h3>
+            <div class="icons">
+                <img src="C:\xampp\htdocs\Technet\img\amazon-pay.png" alt="Amazon Pay">
+                <img src="C:\xampp\htdocs\Technet\img\phone-pe-logo-round-icon-537e.png" alt="PhonePe">
+                <img src="C:\xampp\htdocs\img\icons8-bhim-500.png" alt="Mobikwik">
+            </div>
+        </div>
+
+        <div class="payment-option">
+            <h3>Pay Later</h3>
+            <div class="icons">
+                <img src="C:\xampp\htdocs\Technet\img\Paypal_2014_logo.png" alt="PayPal">
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-section">
+        <h2>Available Offers</h2>
+        <p><strong>UPTO ₹200 CRED cashback on CRED</strong></p>
+        <button class="view-all">View all</button>
+
+        <h3>UPI QR</h3>
+        <div class="qr-box">
+            <img src="C:\xampp\htdocs\Technet\img\Wha.jpg" alt="QR Code">
+            <p>Scan the QR using any UPI App</p>
+            <button class="done-button" onclick="redirectToPayment()">
+                <i class="fas fa-check"></i> Done
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function redirectToPayment() {
+        // Redirect to payment.html
+        window.location.href = 'payment.html';
+    }
+
+    // Retrieve data from localStorage
+    const name = localStorage.getItem('fullName'); // Changed from 'name' to 'fullName'
+    const email = localStorage.getItem('email'); // This remains the same
+    const phone = localStorage.getItem('phone'); // This remains the same
+    const grandTotal = localStorage.getItem('totalAmount'); // Changed from 'grandTotal' to 'totalAmount'
+
+    // Display data in the corresponding elements
+    document.getElementById('user-name').textContent = name ? name : 'Not available';
+    document.getElementById('user-email').textContent = email ? email : 'Not available';
+    document.getElementById('user-phone').textContent = phone ? phone : 'Not available';
+    document.getElementById('user-grand-total').textContent = grandTotal ? grandTotal : 'Not available';
+</script>
+
+</body>
+</html>

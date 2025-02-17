@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful</title>
+    <link rel="stylesheet" href="stylee.css">
+</head>
+<body>
+
+<div class="payment-success-container">
+    <div class="payment-success">
+        <!-- Updated with Image Path for the Tick Icon -->
+        <h2><img src="C:\xampp\htdocs\img\Paid%20icon.png" class="large-round-tick" alt="Payment Success"> Payment Successful</h2>
+
+        <div class="payment-details">
+            <p><strong>Name:</strong> <span id="user-name"></span></p>
+            <p><strong>Email:</strong> <span id="user-email"></span></p>
+            <p><strong>Mobile:</strong> <span id="user-mobile"></span></p>
+            <p><strong>Payment Type:</strong> <span id="payment-type"></span></p>
+            <p><strong>Bank:</strong> <span id="bank-name"></span></p>
+            <p><strong><span style="font-weight: bold;">Amount Paid:</span></strong> ₹<span id="amount-paid"></span></p>
+            <p><strong>Transaction ID:</strong> <span id="transaction-id"></span></p>
+        </div>
+
+        <div class="action-buttons">
+            <button class="print-btn" onclick="window.print()">PRINT</button>
+            <button class="close-btn" onclick="redirectToIndex()">CLOSE</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to get random payment methods and transaction ID
+    function getRandomPaymentDetails() {
+        const paymentMethods = ['ICICI Bank', 'Union Bank', 'UPI', 'GPAY', 'PAYTM'];
+        const banks = ['HDFC', 'ICICI', 'Union Bank', 'SBI', 'Axis Bank'];
+
+        // Randomly selecting payment method, bank, and transaction ID
+        const randomPaymentMethod = paymentMethods[Math.floor(Math.random() * paymentMethods.length)];
+        const randomBank = banks[Math.floor(Math.random() * banks.length)];
+        const transactionId = Math.floor(Math.random() * 10000000000).toString(); // Random 10-digit transaction ID
+
+        return {
+            paymentMethod: randomPaymentMethod,
+            bank: randomBank,
+            transactionId: transactionId
+        };
+    }
+
+    // Retrieve user data from localStorage
+    const name = localStorage.getItem('fullName') || 'Not Available';
+    const email = localStorage.getItem('email') || 'Not Available';
+    const mobile = localStorage.getItem('phone') || 'Not Available';
+    const amountPaid = localStorage.getItem('totalAmount') || '0.00'; // Retrieve amount paid
+
+    // Get random payment details
+    const paymentDetails = getRandomPaymentDetails();
+
+    // Populate the payment details
+    document.getElementById('user-name').textContent = name;
+    document.getElementById('user-email').textContent = email;
+    document.getElementById('user-mobile').textContent = mobile;
+    document.getElementById('payment-type').textContent = paymentDetails.paymentMethod;
+    document.getElementById('bank-name').textContent = paymentDetails.bank;
+    document.getElementById('amount-paid').textContent = amountPaid; // Display amount paid
+    document.getElementById('transaction-id').textContent = paymentDetails.transactionId;
+
+    // Function to redirect to index.html
+    function redirectToIndex() {
+        window.location.href = 'index.html';  // Redirect to the home page (index.html)
+    }
+</script>
+
+</body>
+</html>

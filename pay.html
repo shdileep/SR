@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Checkout</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Container Styling */
+        .checkout-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Section Headings */
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        h2, h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        /* Form Styles */
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #dcdcdc;
+            font-size: 1rem;
+            background: #f8f9fa;
+        }
+
+        input:focus, select:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+        }
+
+        /* Checkout Content Layout */
+        .checkout-content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .billing-details, .order-summary {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .billing-details {
+            margin-right: 20px;
+        }
+
+        /* Order Summary Box */
+        .order-summary {
+            background-color: #eaf7ea;
+            padding: 50px;
+            border-radius: 12px;
+            text-align: left;
+            max-width: 400px;
+        }
+
+        .order-item, .order-total {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .order-total {
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-bottom: none;
+        }
+
+        /* Continue Button */
+        .continue-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .continue-btn:hover {
+            background-color: #2b7dbc;
+        }
+
+        /* Payment Icons */
+        .payment-icons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .payment-icons img {
+            width: 50px;
+            height: auto;
+        }
+
+        /* Course Details Box */
+        .course-details {
+            background-color: #fef8e7;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .course-details span {
+    display: inline; /* Change from block to inline */
+    font-size: 1rem;
+    margin: 8px 0;
+}
+.payment-icons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.payment-icons img {
+    width: 50px;
+    height: auto;
+    margin: 5px;
+}
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .checkout-content {
+                flex-direction: column;
+            }
+
+            .billing-details, .order-summary {
+                width: 100%;
+                margin-right: 0;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2, h3 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="checkout-container">
+        <h1>Checkout</h1>
+        <div class="checkout-content">
+            <div class="billing-details">
+                <h2>Billing Details</h2>
+                <label>Full Name *</label>
+                <input type="text" id="full-name" placeholder="Full Name">
+                <label>Phone *</label>
+                <input type="tel" id="phone" placeholder="Phone">
+                <label>Email address *</label>
+                <input type="email" id="email" placeholder="Email address">
+
+                <h3>Select Course</h3>
+                <select id="course-select">
+                    <option value="">-- Select a Course --</option>
+                </select>
+            </div>
+
+            <div class="order-summary">
+                <h2>Your Order</h2>
+                <div class="order-item">
+                    <span>Course </span>
+                    <span id="selected-course">Please select a course</span>
+                </div>
+                <div class="order-total">
+                    <strong>Total</strong>
+                    <strong>&#8377;<span id="total-price">0.00</span></strong>
+                </div>
+
+                <div class="course-details" id="course-details" style="display: none;">
+                    <h3>Course Details</h3>
+                    <span><strong>Trainer:</strong> <span id="trainer"></span></span>
+                    <span><strong>Rating:</strong> <span id="rating"></span> / 5</span>
+                    <span><strong>Duration:</strong> <span id="duration"></span> weeks</span>
+                    <span><strong>People Completed:</strong> <span id="people"></span></span>
+                    <span><strong>Price:</strong> &#8377;<span id="price"></span></span>
+                </div>
+
+                <button class="continue-btn" id="continue-btn">Continue</button>
+
+<div class="payment-icons">
+    <img src="C:\xampp\htdocs\Technet\img\amazon-pay.png" alt="UPI">
+    <img src="C:\xampp\htdocs\Technet\img\icons8-google-pay-480.png" alt="GPay">
+    <img src="C:\xampp\htdocs\Technet\img\phone-pe-logo-round-icon-537e.png" alt="PhonePay">
+    <img src="C:\xampp\htdocs\Technet\img\Paypal_2014_logo.png" alt="Credit/Debit">
+    <img src="C:\xampp\htdocs\Technet\img\paytm_825454.png" alt="PayPal">
+    <img src="C:\xampp\htdocs\Technet\img\maestro.png" alt="Wallet">
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Course Data
+        const courses = [
+            { name: "Web Development", trainer: "Himal Vamshi", rating: 4.8, duration: 4, people: "500+", price: 4999 },
+            { name: "Data Science", trainer: "Venu Kumar", rating: 4.7, duration: 6, people: "700+", price: 5999 },
+            { name: "Machine Learning", trainer: "Saketh Choudhary", rating: 4.9, duration: 5, people: "400+", price: 5499 },
+            { name: "Cloud Computing", trainer: "Deva N", rating: 4.5, duration: 4, people: "350+", price: 3999 },
+            { name: "AI & Robotics", trainer: "Naveen", rating: 4.6, duration: 6, people: "600+", price: 6499 },
+            { name: "Cybersecurity", trainer: "Hemant K", rating: 4.8, duration: 5, people: "450+", price: 5899 },
+            { name: "Blockchain Development", trainer: "Yeshwanth AK", rating: 4.4, duration: 4, people: "300+", price: 5299 },
+            { name: "UI/UX Design", trainer: "Sadiq Ahmed", rating: 4.7, duration: 3, people: "500+", price: 4699 },
+            { name: "Digital Marketing", trainer: "Venkatesh G", rating: 4.6, duration: 5, people: "550+", price: 5599 },
+            { name: "Business Analytics", trainer: "Yaswanth CH", rating: 4.7, duration: 4, people: "650+", price: 6499 },
+            { name: "Full Stack Development", trainer: "Pavan K", rating: 4.8, duration: 6, people: "600+", price: 6999 },
+            { name: "Android App Development", trainer: "Sunny P", rating: 4.5, duration: 5, people: "400+", price: 4999 },
+            { name: "Cloud Security", trainer: "Arun R", rating: 4.6, duration: 4, people: "450+", price: 5499 },
+            { name: "Big Data", trainer: "Siva Nageswar Rao K", rating: 4.7, duration: 5, people: "700+", price: 6499 },
+            { name: "DevOps", trainer: "Bala Krishna V", rating: 4.8, duration: 4, people: "500+", price: 5999 },
+            { name: "Software Testing", trainer: "Deva Kiran", rating: 4.6, duration: 3, people: "600+", price: 4799 },
+            { name: "Project Management", trainer: "Samba Naik N", rating: 4.7, duration: 6, people: "550+", price: 6999 },
+            { name: "Web Design", trainer: "Namer Sk", rating: 4.5, duration: 4, people: "350+", price: 4399 },
+            { name: "AI Programming", trainer: "Kishore K", rating: 4.9, duration: 5, people: "800+", price: 7499 },
+            { name: "Networking", trainer: "Sanju B", rating: 4.7, duration: 6, people: "600+", price: 6599 },
+            { name: "Game Development", trainer: "Manoj S", rating: 4.6, duration: 4, people: "500+", price: 5699 },
+            { name: "Data Visualization", trainer: "Bhanu Prasad", rating: 4.8, duration: 5, people: "700+", price: 6499 },
+            { name: "Augmented Reality", trainer: "Gowtham P", rating: 4.7, duration: 6, people: "650+", price: 6999 },
+            { name: "Blockchain for Business", trainer: "Avinash K", rating: 4.5, duration: 4, people: "400+", price: 4999 }
+        ];
+
+        const courseSelect = document.getElementById('course-select');
+        const selectedCourseElement = document.getElementById('selected-course');
+        const totalPriceElement = document.getElementById('total-price');
+        const courseDetails = document.getElementById('course-details');
+        const trainerElement = document.getElementById('trainer');
+        const ratingElement = document.getElementById('rating');
+        const durationElement = document.getElementById('duration');
+        const peopleElement = document.getElementById('people');
+        const priceElement = document.getElementById('price');
+        const continueBtn = document.getElementById('continue-btn');
+
+        // Populate the dropdown menu
+        courses.forEach((course, index) => {
+            const option = document.createElement('option');
+            option.value = index;
+            option.textContent = course.name;
+            courseSelect.appendChild(option);
+        });
+
+        // Handle course selection
+        courseSelect.addEventListener('change', function() {
+            const selectedIndex = this.value;
+            if (selectedIndex !== "") {
+                const selectedCourse = courses[selectedIndex];
+                selectedCourseElement.textContent = selectedCourse.name;
+                totalPriceElement.textContent = selectedCourse.price.toFixed(2);
+
+                trainerElement.textContent = selectedCourse.trainer;
+                ratingElement.textContent = selectedCourse.rating;
+                durationElement.textContent = selectedCourse.duration;
+                peopleElement.textContent = selectedCourse.people;
+                priceElement.textContent = selectedCourse.price;
+
+                courseDetails.style.display = 'block';
+            } else {
+                selectedCourseElement.textContent = "Please select a course";
+                totalPriceElement.textContent = "0.00";
+                courseDetails.style.display = 'none';
+            }
+        });
+
+        // Redirect to payy.html on continue button click
+        continueBtn.addEventListener('click', function() {
+            const fullName = document.getElementById('full-name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const totalAmount = totalPriceElement.textContent;
+
+            localStorage.setItem('fullName', fullName);
+            localStorage.setItem('phone', phone);
+            localStorage.setItem('email', email);
+            localStorage.setItem('totalAmount', totalAmount);
+
+            window.location.href = "payy.html";
+        });
+    </script>
+</body>
+
+</html>

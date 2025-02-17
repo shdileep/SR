@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | ChatGPT</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+            margin: 0;
+        }
+
+        /* Login Container */
+        .login-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        /* Header */
+        h1 {
+            font-size: 24px;
+            color: #222;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        /* Form */
+        form {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .continue-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #2a7f42;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .continue-btn:hover {
+            background-color: #1d6831;
+        }
+
+        /* Sign-up Text */
+        .signup-text {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .signup-text a {
+            color: #2a7f42;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .divider::before {
+            margin-right: 10px;
+        }
+
+        .divider::after {
+            margin-left: 10px;
+        }
+
+        /* Alternate Options */
+        .alt-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .alt-options button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f5f5;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .alt-options button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .alt-options button img {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        /* Terms */
+        .terms {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .terms a {
+            color: #2a7f42;
+            text-decoration: none;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>ChatGPT</h1>
+        <h2>Welcome back</h2>
+
+        <form>
+            <label for="email">Email address*</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <button type="submit" class="continue-btn">Continue</button>
+        </form>
+
+        <p class="signup-text">Don't have an account? <a href="#">Sign Up</a></p>
+
+        <div class="divider">OR</div>
+
+        <div class="alt-options">
+            <button class="phone-btn"><img src="C:\xampp\htdocs\Technet\img\phone.png"></img> Continue with phone</button>
+            <button class="google-btn"><img src="C:\xampp\htdocs\Technet\img\google.png" alt="Google"> Continue with Google</button>
+            <button class="microsoft-btn"><img src="C:\xampp\htdocs\Technet\img\microsoft.png" alt="Microsoft"> Continue with Microsoft Account</button>
+            <button class="apple-btn"><img src="C:\xampp\htdocs\Technet\img\apple.png" alt="Apple"> Continue with Apple</button>
+        </div>
+
+        <p class="terms">
+            <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
+        </p>
+    </div>
+</body>
+</html>

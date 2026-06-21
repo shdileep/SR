@@ -275,7 +275,7 @@
         const trainerElement = document.getElementById('trainer');
         const ratingElement = document.getElementById('rating');
         const durationElement = document.getElementById('duration');
-        const peopleElement = document.getElementById('people');
+const peopleElement = document.getElementById('people');
         const priceElement = document.getElementById('price');
         const continueBtn = document.getElementById('continue-btn');
 
@@ -290,7 +290,7 @@
         // Handle course selection
         courseSelect.addEventListener('change', function() {
             const selectedIndex = this.value;
-            if (selectedIndex !== "") {
+            if (selectedIndex) {
                 const selectedCourse = courses[selectedIndex];
                 selectedCourseElement.textContent = selectedCourse.name;
                 totalPriceElement.textContent = selectedCourse.price.toFixed(2);
